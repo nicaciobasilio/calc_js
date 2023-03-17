@@ -1,0 +1,72 @@
+@use './variaveis';
+
+.calc {
+    width: 400px;
+    padding: 0.5em;
+    background: transparent;
+    border: 1px solid variaveis.$corBordaMaior;
+    border-radius: 20px;
+    color: variaveis.$corTextoPrincipal;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(20px);
+
+    &__title {
+        font-size: 0.8em;
+        font-weight: 300;
+        color: variaveis.$corTextoSecundaria;
+    }
+}
+
+.operations {
+    text-align: right;
+
+    &__previous {
+        color: variaveis.$corTextoTerciaria;
+        padding: 0.2em;
+        overflow-wrap: break-word;
+        min-height: 1.8em;
+    }
+
+    &__current {
+        min-height: 1.8em;
+        font-size: 3em;
+        font-weight: 700;
+        padding: 0.2em;
+        overflow-wrap: break-word;
+    }
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 3px;
+
+    &__button {
+        border: 1px solid transparent;
+        border-radius: 20px;
+        height: 4em;
+        font-size: 1.2em;
+        background-color: variaveis.$corFundoBotao;
+        cursor: pointer;
+
+        &:hover {
+            background-color: variaveis.$corFundoBotaoTerciaria;
+            border-color: variaveis.$corBorda;
+        }
+    }
+
+    &__number {
+        background-color: variaveis.$corFundoBotaoSecundaria;
+    }
+
+    &__equal {
+        grid-column: span 2;
+        background-color: variaveis.$corFundoBotaoQuaternaria;
+
+        &:hover {
+            grid-column: span 2;
+            background-color: variaveis.$corFundoBotaoPentenaria;
+        }
+    }
+}
