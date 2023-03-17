@@ -2,6 +2,26 @@ const previousOperationText = document.querySelector("#previous-operation");
 const currentOperationText = document.querySelector("#current-operation");
 const buttons = document.querySelectorAll("#buttons-container button");
 
+document.addEventListener('keydown', function(event) {
+    var key = event.keyCode || event.which;
+    if (key >= 96 && key <= 105) {
+        let current = document.querySelector("#current-operation");
+        current.innerText += String.fromCharCode(key - 48);
+    } else if(key >= 48 && key <= 57) {
+        let current = document.querySelector("#current-operation");
+        current.innerText += String.fromCharCode(key);
+    } 
+});
+document.addEventListener('keydown', function(event) {
+    var key = event.keyCode || event.which;
+    if (key === 109) {
+        let current = document.querySelector("#current-operation");
+        current.innerText = String.fromCharCode(key - 64);
+    }
+});
+
+document.addEventListener('keydown', function (event){console.log(event.keyCode)});
+
 class Calculator {
     constructor (previousOperationText, currentOperationText) {
         this.previousOperationText = previousOperationText;
@@ -29,6 +49,7 @@ class Calculator {
         let operationValue;
         const previous = +this.previousOperationText.innerText.split(" ")[0];
         const current = +this.currentOperationText.innerText;
+
 
         switch(operation) {
             case "+":
@@ -79,7 +100,7 @@ class Calculator {
         }
     }
     changeOperation (operation) {
-        const mathOperations = ["*", "/", "+", "-"]
+        const mathOperations = ["*", "/", "+", "-", "(", ")"]
 
         if(!mathOperations.includes(operation)) {
             return
